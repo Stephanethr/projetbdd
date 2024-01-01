@@ -9,21 +9,25 @@ function getBenevoles($conn)
 
 function displayBenevoles($benevoles)
 {
-    echo "<h2>Liste des Bénévoles</h2>";
-    echo "<table border='1'>
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-            </tr>";
-    foreach ($benevoles as $benevole) {
-        echo "<tr>
-                <td>{$benevole['id_benevole']}</td>
-                <td>{$benevole['Nom']}</td>
-                <td>{$benevole['Prenom']}</td>
-              </tr>";
+    if (isset($benevoles) && !empty($benevoles)) {
+        echo "<h2>Liste des Bénévoles</h2>";
+        echo "<table border='1'>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                </tr>";
+        foreach ($benevoles as $benevole) {
+            echo "<tr>
+                    <td>{$benevole['id_benevole']}</td>
+                    <td>{$benevole['Nom']}</td>
+                    <td>{$benevole['Prenom']}</td>
+                  </tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "Aucune donnée à afficher.";
     }
-    echo "</table>";
 }
 
 function getSections($conn)
@@ -76,13 +80,15 @@ function displayActivites($activites)
     echo "</table>";
 }
 
-function getInscriptions($conn) {
+function getInscriptions($conn)
+{
     $query = "SELECT * FROM Inscription";
     $result = $conn->query($query);
     return $result->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function displayInscriptions($inscriptions) {
+function displayInscriptions($inscriptions)
+{
     echo "<h2>Liste des Inscriptions</h2>";
     echo "<table border='1'>
             <tr>
@@ -134,13 +140,15 @@ function displayParente($liensParente)
     echo "</table>";
 }
 
-function getRemboursements($conn) {
+function getRemboursements($conn)
+{
     $query = "SELECT * FROM Remboursement";
     $result = $conn->query($query);
     return $result->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function displayRemboursements($remboursements) {
+function displayRemboursements($remboursements)
+{
     echo "<h2>Liste des Remboursements</h2>";
     echo "<table border='1'>
             <tr>
@@ -160,13 +168,15 @@ function displayRemboursements($remboursements) {
     echo "</table>";
 }
 
-function getAdherents($conn) {
+function getAdherents($conn)
+{
     $query = "SELECT * FROM Adherent";
     $result = $conn->query($query);
     return $result->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function displayAdherents($adherents) {
+function displayAdherents($adherents)
+{
     echo "<h2>Liste des Adhérents</h2>";
     echo "<table border='1'>
             <tr>
@@ -185,10 +195,3 @@ function displayAdherents($adherents) {
     }
     echo "</table>";
 }
-
-?>
-
-
-
-
-

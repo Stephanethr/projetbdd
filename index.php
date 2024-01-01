@@ -1,11 +1,11 @@
 <?php
 include 'config.php';
 include 'functions.php';
-$conn = new mysqli("localhost", "root", "", "projetbdd");
 
-$testreq = "SELECT * FROM Benevole";
-$result = $conn->query($testreq);
-echo $result->num_rows;
+// $conn = new mysqli("localhost", "root", "", "projetbdd");
+// $testreq = "SELECT * FROM Benevole";
+// $result = $conn->query($testreq);
+// echo $result->num_rows;
 try {
     $data = [];
     $conn = new mysqli("localhost", "root", "", "projetbdd");
