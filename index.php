@@ -1,29 +1,28 @@
 <?php
 include 'config.php';
 include 'functions.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-// $conn = new mysqli("localhost", "root", "", "projetbdd");
-// $testreq = "SELECT * FROM Benevole";
-// $result = $conn->query($testreq);
-// echo $result->num_rows;
+
 try {
     $data = [];
     $conn = new mysqli("localhost", "root", "", "projetbdd");
 
     if (isset($_POST['afficher_benevoles'])) {
-        $data['benevoles'] = getBenevoles($conn);
+        $data['benevole'] = getBenevoles($conn);
     }
 
     if (isset($_POST['afficher_sections'])) {
-        $data['sections'] = getSections($conn);
+        $data['section'] = getSections($conn);
     }
 
     if (isset($_POST['afficher_activites'])) {
-        $data['activites'] = getActivites($conn);
+        $data['activite'] = getActivites($conn);
     }
 
     if (isset($_POST['afficher_inscriptions'])) {
-        $data['inscriptions'] = getInscriptions($conn);
+        $data['inscription'] = getInscriptions($conn);
     }
 
     if (isset($_POST['afficher_parente'])) {
@@ -31,11 +30,11 @@ try {
     }
 
     if (isset($_POST['afficher_remboursements'])) {
-        $data['remboursements'] = getRemboursements($conn);
+        $data['remboursement'] = getRemboursements($conn);
     }
 
     if (isset($_POST['afficher_adherents'])) {
-        $data['adherents'] = getAdherents($conn);
+        $data['adherent'] = getAdherents($conn);
     }
 } catch (PDOException $e) {
     echo "Erreur: " . $e->getMessage();
@@ -61,13 +60,13 @@ $conn = null;
 <form method="post" action="index.php">
     <label for="select_data">Afficher les données :</label>
     <select name="select_data" id="select_data">
-        <option value="benevoles">Bénévoles</option>
-        <option value="sections">Sections</option>
-        <option value="activites">Activités</option>
-        <option value="inscriptions">Inscriptions</option>
+        <option value="benevole">Bénévoles</option>
+        <option value="section">Sections</option>
+        <option value="activite">Activités</option>
+        <option value="inscription">Inscriptions</option>
         <option value="parente">Liens de Parenté</option>
-        <option value="remboursements">Remboursements</option>
-        <option value="adherents">Adhérents</option>
+        <option value="remboursement">Remboursements</option>
+        <option value="adherent">Adhérents</option>
     </select>
     <input type="submit" value="Afficher">
 </form>

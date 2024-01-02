@@ -2,9 +2,20 @@
 
 function getBenevoles($conn)
 {
-    $query = "SELECT * FROM Benevole";
-    $result = $conn->query($query);
-    return $result->fetchAll(PDO::FETCH_ASSOC);
+    try {
+        $query = "SELECT * FROM benevolehzb";
+        var_dump($query);
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        if ($stmt->errorCode() !== '00000') {
+            var_dump($stmt->errorInfo());
+        }   
+        // Récupérer les données sous forme de tableau associatif
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Erreur lors de la récupération des bénévoles : " . $e->getMessage();
+        return [];
+    }
 }
 
 function displayBenevoles($benevoles)
@@ -32,9 +43,17 @@ function displayBenevoles($benevoles)
 
 function getSections($conn)
 {
-    $query = "SELECT * FROM Section";
-    $result = $conn->query($query);
-    return $result->fetchAll(PDO::FETCH_ASSOC);
+    try {
+        $query = "SELECT * FROM section";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+
+        // Récupérer les données sous forme de tableau associatif
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Erreur lors de la récupération des sections : " . $e->getMessage();
+        return [];
+    }
 }
 
 function displaySections($sections)
@@ -58,9 +77,17 @@ function displaySections($sections)
 
 function getActivites($conn)
 {
-    $query = "SELECT * FROM Activite";
-    $result = $conn->query($query);
-    return $result->fetchAll(PDO::FETCH_ASSOC);
+    try {
+        $query = "SELECT * FROM activite";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+
+        // Récupérer les données sous forme de tableau associatif
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Erreur lors de la récupération des activités : " . $e->getMessage();
+        return [];
+    }
 }
 
 function displayActivites($activites)
@@ -82,9 +109,17 @@ function displayActivites($activites)
 
 function getInscriptions($conn)
 {
-    $query = "SELECT * FROM Inscription";
-    $result = $conn->query($query);
-    return $result->fetchAll(PDO::FETCH_ASSOC);
+    try {
+        $query = "SELECT * FROM inscription";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+
+        // Récupérer les données sous forme de tableau associatif
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Erreur lors de la récupération des inscriptions : " . $e->getMessage();
+        return [];
+    }
 }
 
 function displayInscriptions($inscriptions)
@@ -112,13 +147,19 @@ function displayInscriptions($inscriptions)
     echo "</table>";
 }
 
-
-
 function getParente($conn)
 {
-    $query = "SELECT * FROM Parente";
-    $result = $conn->query($query);
-    return $result->fetchAll(PDO::FETCH_ASSOC);
+    try {
+        $query = "SELECT * FROM parente";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+
+        // Récupérer les données sous forme de tableau associatif
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Erreur lors de la récupération des liens de parenté : " . $e->getMessage();
+        return [];
+    }
 }
 
 function displayParente($liensParente)
@@ -142,9 +183,17 @@ function displayParente($liensParente)
 
 function getRemboursements($conn)
 {
-    $query = "SELECT * FROM Remboursement";
-    $result = $conn->query($query);
-    return $result->fetchAll(PDO::FETCH_ASSOC);
+    try {
+        $query = "SELECT * FROM remboursement";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+
+        // Récupérer les données sous forme de tableau associatif
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Erreur lors de la récupération des remboursements : " . $e->getMessage();
+        return [];
+    }
 }
 
 function displayRemboursements($remboursements)
@@ -170,9 +219,17 @@ function displayRemboursements($remboursements)
 
 function getAdherents($conn)
 {
-    $query = "SELECT * FROM Adherent";
-    $result = $conn->query($query);
-    return $result->fetchAll(PDO::FETCH_ASSOC);
+    try {
+        $query = "SELECT * FROM adherent";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+
+        // Récupérer les données sous forme de tableau associatif
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Erreur lors de la récupération des adhérents : " . $e->getMessage();
+        return [];
+    }
 }
 
 function displayAdherents($adherents)
@@ -195,3 +252,5 @@ function displayAdherents($adherents)
     }
     echo "</table>";
 }
+
+?>
