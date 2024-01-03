@@ -26,7 +26,7 @@ $conn->close();
 <head>
     <title>Projet BDD</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -34,6 +34,7 @@ $conn->close();
 include_once('menu.php');
 ?>
         <!-- Reste du contenu de votre page... -->
+    <div class="content">
         <?php
         // Afficher les statistiques
         echo "<h2>Statistiques</h2>";
@@ -42,10 +43,8 @@ include_once('menu.php');
         echo "Total sections : $total_sections <br>";
         echo "Total activités : $total_activites <br>";
         ?>
-
-        <footer>
-            <p>Site réalisé par Thiry Stéphane.</p>
-        </footer>
+    </div>
+    <?php include 'footer.php'; ?>
     </body>
 
 </body>

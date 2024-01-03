@@ -1,14 +1,14 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <header>
     <h1>Mon Site</h1>
 </header>
 
-<body>
-    <nav>
+
+    <nav id="menu">
         <ul>
             <li><a href="index.php">Accueil</a></li>
             <li><a href="benevoles.php">Bénévoles</a></li>
@@ -18,4 +18,3 @@
         </ul>
     </nav>
 
-</body>
